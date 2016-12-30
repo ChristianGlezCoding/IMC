@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">IMC</string>
+    <string name="altura">Altura</string>
+    <string name="edad">Edad</string>
+    <string name="peso">Peso</string>
+    <string name="sexo">Sexo</string>
+    <string name="hombre">Hombre</string>
+    <string name="mujer">Mujer</string>
+    <string name="botonCalcular">Calcular</string>
+    <string name="botonGrabar">GRABAR DATOS</string>
+    <string name="botonRegresar">REGRESAR</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Nombre</string>
+    <string name="botonEscribir">ESCRIBIR EN FICHERO</string>
+</resources>

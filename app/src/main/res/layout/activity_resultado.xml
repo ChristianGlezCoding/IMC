@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_resultado"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="9">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewResultado"
+        android:layout_weight="0.5"
+        android:textSize="24sp" />
+
+    <Button
+        android:text="GRABAR DATOS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonGrabar"
+        android:layout_weight="0.5"
+        tools:text="@string/botonGrabar" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:id="@+id/paraFragment">
+
+    </FrameLayout>
+
+    <Button
+        android:text="REGRESAR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonRegresar"
+        android:layout_weight="0.5"
+        tools:text="@string/botonRegresar" />
+</LinearLayout>
