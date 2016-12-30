@@ -13,8 +13,9 @@ import android.widget.TextView;
 public class Resultado extends AppCompatActivity implements EscribirFichero.OnFragmentInteractionListener {
 
     TextView textViewResultado;
-    String textoAGuardar;
+    //String textoAGuardar;
     Bundle bundle = new Bundle();
+
 
 
 

@@ -40,8 +40,36 @@ public abstract class Persona implements Parcelable {
     protected abstract double calcularPesoIdeal();
     @Override
     public String toString(){
-        return  "Edad: " + edad + "  Altura: " + alturaEnCm + "\nPeso: " + pesoEnKg + "\nIMC: " + calcularIMC();
+        return  "Nombre: " + nombre + " Apellido: " + apellido1 +"\nEdad: " + edad + "  Altura: " + alturaEnCm + "\nPeso: " + pesoEnKg + "\nIMC: " + calcularIMC();
     }
 
+    public String getNombre() {
+        return nombre;
+    }
 
+    public String getApellido1() {
+        return apellido1;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public int getAlturaEnCm() {
+        return alturaEnCm;
+    }
+
+    public double getPesoEnKg() {
+        return pesoEnKg;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido1(String apellido1) {
+        this.apellido1 = apellido1;
+    }
 }
+
+

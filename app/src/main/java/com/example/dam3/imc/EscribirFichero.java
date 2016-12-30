@@ -40,12 +40,13 @@ public class EscribirFichero extends Fragment {
 
 
 
-    String nombre;
-    String apellido;
-    String datos;
+    //String nombre;
+    //String apellido;
+    //String datos;
     String textoGrabar;
     TextView textviewApellido;
     TextView textviewNombre;
+    Button buttonBDD;
     Persona persona;
 
 
@@ -128,13 +129,20 @@ public class EscribirFichero extends Fragment {
             @Override
             public void onClick(View v) {
 
-                persona.nombre = textviewNombre.getText().toString();
-                persona.apellido1 = textviewApellido.getText().toString();
-                textoGrabar = nombre + " " + apellido + "\n" + persona;
+                persona.setNombre(textviewNombre.getText().toString());
+                persona.setApellido1(textviewApellido.getText().toString());
+                textoGrabar = persona.nombre + " " + persona.apellido1 + "\n" + persona;
                 //Para pasar String
                 //textoGrabar = nombre + " " + apellido + "\n" + datos ;
                 grabar(textoGrabar);
 
+            }
+        });
+
+        buttonBDD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
 
@@ -182,7 +190,7 @@ public class EscribirFichero extends Fragment {
             archivo.close();
             Toast t = Toast.makeText(getActivity(), "Los datos fueron grabados",Toast.LENGTH_SHORT);
             t.show();
-            t = Toast.makeText(getActivity(), textoGrabar ,Toast.LENGTH_SHORT);
+            t = Toast.makeText(getActivity(), persona.toString() ,Toast.LENGTH_SHORT);
             t.show();
 
 

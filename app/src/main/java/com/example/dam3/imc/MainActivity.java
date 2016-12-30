@@ -1,28 +1,18 @@
 package com.example.dam3.imc;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-
-    EditText editTextPeso;
-    EditText editTextAltura;
-    EditText editTextEdad;
-    Persona persona;
-    Persona Hombre;
-    Persona Mujer;
-    Button calcular;
-    RadioButton botonHombre, botonMujer;
-
-    double peso;
-    int altura;
-    int edad;
 
 
 
@@ -32,66 +22,43 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        editTextEdad = (EditText) findViewById(R.id.editTextEdad);
-        editTextAltura = (EditText) findViewById(R.id.editTextAltura);
-        editTextPeso = (EditText) findViewById(R.id.editTextPeso);
-        botonHombre = (RadioButton) findViewById(R.id.radioButtonHombre);
-        botonMujer = (RadioButton) findViewById(R.id.radioButtonMujer);
-        calcular = (Button) findViewById((R.id.buttonCalcular));
+
+
+        final String[] array = new String[] {
+                "Calcular IMC"
+                ,"Ver Datos Guardados"
+        };
+
+        ListAdapter adaptador = new ArrayAdapter<String>(
+                this, R.layout.simple_list_view_activities, array);
+
+        final ListView listView = (ListView) findViewById(R.id.activity_main2);
+        listView.setAdapter(adaptador);
+
+        final HashMap activities = new HashMap<String, Class<? extends Activity>>();
+        activities.put(array[0],Calcular.class);
+        activities.put(array[1],Resultado.class);
 
 
 
-
-
-
-
-        calcular.setOnClickListener(new View.OnClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-
-                edad = Integer.parseInt(editTextEdad.getText().toString());
-                peso = Double.parseDouble(editTextPeso.getText().toString());
-                altura = Integer.parseInt(editTextAltura.getText().toString());
-
-
-
-
-                    if (botonHombre.isSelected()) {
-
-
-                        Hombre = new Hombre("", "", edad, altura, peso);
-                        Hombre.calcularIMC();
-                        persona = Hombre;
-
-                    } else {
-
-
-                        Mujer = new Mujer("", "", edad, altura, peso);
-                        Mujer.calcularIMC();
-                        persona = Mujer;
-
-
-                    }
-
-                final Intent intent = new Intent(getApplicationContext(), Resultado.class);
-                intent.putExtra("Persona", persona);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long
+                    id) {
+                // La posición donde se hace clic en el elemento de lista
+                int posicion = position;
+                //obtener el valor del string del elemento donde se hizo clic
+                String itemValue = (String) listView.getItemAtPosition(position);
+                //Con el fin de empezar a mostrar una nueva actividad lo que necesitamos
+                //es un intent
+                Intent intent = new Intent(getApplicationContext(), (Class<Activity>)
+                        activities.get(itemValue));
                 startActivity(intent);
             }
         });
 
 
 
-    }
-
-
-    void dates(){
-
-
-
-
-
 
     }
-
-
 }

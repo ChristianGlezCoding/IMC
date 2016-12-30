@@ -46,4 +46,10 @@
         android:id="@+id/buttonEscribirEnFichero"
         tools:text="@string/botonEscribir" />
 
+    <Button
+        android:text="Escribir en BDD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonBDD" />
+
 </LinearLayout>
