@@ -127,6 +127,44 @@ public class BDD extends SQLiteOpenHelper {
 
         }
 
+    public ArrayList<String> obtenerRegistrosFiltrados(SQLiteDatabase db, String nom){
+
+        String nombre, edad, altura, peso, imc, sexo, ideal;
+        String filtroWhereLike = "%";
+
+        String where = "Nombre LIKE ?";
+        String[] whereArgs = {filtroWhereLike};
+
+        Cursor c = null;
+        c = db.query("IMC", null, where,
+                new String[] {"%"+ nom + "%" }, null, null, null,
+                null);
+
+
+        //c = db.query("IMC", null, where, whereArgs, null, null, null);
+        ArrayList <String> anotaciones = new ArrayList<>();
+        if( c != null && c.moveToFirst() ){
+            do {
+                nombre = "Nombre: " + c.getString(1);
+                edad = " Edad: " + c.getString(2) + " ";
+                altura = "Altura: " +c.getString(3);
+                peso = "Peso: " + c.getString(4);
+                imc = "IMC: " + c.getString(5);
+                sexo = "Sexo: " + c.getString(6);
+                ideal = "Ideal: " + c.getString(7);
+                anotaciones.add(nombre);
+                anotaciones.add(edad);
+                anotaciones.add(altura);
+                anotaciones.add(peso);
+                anotaciones.add(imc);
+                anotaciones.add(sexo);
+                anotaciones.add(ideal);
+            }while( c.moveToNext());
+        }
+        c.close();
+        return anotaciones;
+    }
+
 
 
 

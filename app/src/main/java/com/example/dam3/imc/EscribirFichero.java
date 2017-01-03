@@ -177,8 +177,9 @@ public class EscribirFichero extends Fragment {
                     }
                     **/
 
-                db.insertarRegistro(db.getWritableDatabase(), nombre_completo, persona.getEdad(), persona.getAlturaEnCm(), persona.getPesoEnKg(), persona.calcularIMC(), persona.sexo, persona.calcularPesoIdeal());
-
+                db.insertarRegistro(db.getWritableDatabase(), nombre_completo, persona.getEdad(), persona.getAlturaEnCm(), persona.getPesoEnKg(), persona.calcularIMC(), persona.getSexo(), persona.calcularPesoIdeal());
+                Toast t = Toast.makeText(getActivity(), "Los datos de " + nombre_completo + " han sido grabados en la Base de Datos", Toast.LENGTH_SHORT);
+                t.show();
 
 
             }

@@ -2,6 +2,7 @@ package com.example.dam3.imc;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ public class VerDatos extends AppCompatActivity {
     TextView res;
     Button filtrar;
     EditText nombre_filtro;
+    String nom;
     BDD db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,16 @@ public class VerDatos extends AppCompatActivity {
 
         mostrarArticulos();
 
+        filtrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                nom = nombre_filtro.getText().toString();
+
+                mostrarArticulosFiltrados(nom);
+
+            }
+        });
 
 
 
@@ -53,5 +64,26 @@ public class VerDatos extends AppCompatActivity {
         }
 
     }
+
+    private void mostrarArticulosFiltrados(String nom){
+
+
+        ArrayList<String> articulos;
+        articulos = db.obtenerRegistrosFiltrados(db.getReadableDatabase(), nom);
+
+        int i = 1;
+
+        res.setText("");
+        for(String dato : articulos){
+            res.append(dato + "    ");
+            if( i % 8 == 0) // como ocho datos conforman una fila entera. cada dos datos hacemos un salto de línea
+                res.append("\n\n");
+            i++;
+
+        }
+
+    }
+
+
 
 }

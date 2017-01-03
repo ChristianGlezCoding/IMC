@@ -59,9 +59,10 @@ public class Calcular extends AppCompatActivity {
 
 
 
-                    if (botonHombre.isSelected()) {
+                    if (botonHombre.isChecked()) {
 
                         sexo = "Hombre";
+
                         Hombre = new Hombre("", "", edad, altura, peso, sexo);
                         Hombre.calcularIMC();
 
@@ -70,9 +71,10 @@ public class Calcular extends AppCompatActivity {
                         persona = Hombre;
                         //intent.putExtras(bundle);
 
-                    } else {
+                    } if (botonMujer.isChecked()) {
 
                         sexo = "Mujer";
+
                         Mujer = new Mujer("", "", edad, altura, peso, sexo);
                         Mujer.calcularIMC();
 

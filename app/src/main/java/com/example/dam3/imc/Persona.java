@@ -83,6 +83,10 @@ public abstract class Persona implements Parcelable {
     public String getSexo() {
         return sexo;
     }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
 }
 
 
