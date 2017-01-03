@@ -22,8 +22,8 @@ public class Calcular extends AppCompatActivity {
     double peso;
     int altura;
     int edad;
-    boolean sexo = true;
-
+    String sexo;
+    //Bundle bundle;
 
 
     @Override
@@ -45,6 +45,9 @@ public class Calcular extends AppCompatActivity {
 
 
 
+
+
+
         calcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,25 +61,33 @@ public class Calcular extends AppCompatActivity {
 
                     if (botonHombre.isSelected()) {
 
-
-                        Hombre = new Hombre("", "", edad, altura, peso);
+                        sexo = "Hombre";
+                        Hombre = new Hombre("", "", edad, altura, peso, sexo);
                         Hombre.calcularIMC();
-                        sexo = true;
+
+                        //bundle = new Bundle();
+                        //bundle.putString("Sexo", sexo);
                         persona = Hombre;
+                        //intent.putExtras(bundle);
 
                     } else {
 
-
-                        Mujer = new Mujer("", "", edad, altura, peso);
+                        sexo = "Mujer";
+                        Mujer = new Mujer("", "", edad, altura, peso, sexo);
                         Mujer.calcularIMC();
-                        sexo = false;
-                        persona = Mujer;
 
+                        //bundle = new Bundle();
+                        //bundle.putString("Sexo", sexo);
+                        persona = Mujer;
+                        //intent.putExtras(bundle);
 
                     }
 
+
                 final Intent intent = new Intent(getApplicationContext(), Resultado.class);
+
                 intent.putExtra("Persona", persona);
+
                 startActivity(intent);
             }
         });
@@ -86,7 +97,4 @@ public class Calcular extends AppCompatActivity {
     }
 
 
-    public boolean isSexo() {
-        return sexo;
-    }
 }

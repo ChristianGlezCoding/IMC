@@ -14,6 +14,7 @@ public class Resultado extends AppCompatActivity implements EscribirFichero.OnFr
 
     TextView textViewResultado;
     //String textoAGuardar;
+    String sexo;
     Bundle bundle = new Bundle();
 
 
@@ -62,6 +63,10 @@ public class Resultado extends AppCompatActivity implements EscribirFichero.OnFr
                 //Bundle para Strings
                 //bundle.putString("Datos", textoAGuardar);
 
+                //Intent intent = getIntent();
+                //sexo = intent.getStringExtra("Sexo");
+
+                //bundle.putString("Sexo", sexo);
 
 
 

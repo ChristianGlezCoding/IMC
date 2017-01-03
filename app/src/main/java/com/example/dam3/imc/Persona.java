@@ -22,22 +22,31 @@ public abstract class Persona implements Parcelable {
     protected int alturaEnCm;
     protected double pesoEnKg;
 
+    protected double imc;
+    protected  String sexo;
+
+
+
 
     
-    public Persona(String nombre, String ape1, int edad, int altura, double peso){
+    public Persona(String nombre, String ape1, int edad, int altura, double peso, String sexo){
         this.nombre = nombre;
         this.apellido1 = ape1;
-
         this.edad = edad;
         this.alturaEnCm = altura;
         this.pesoEnKg = peso;
+        this.sexo = sexo;
     }
     
     
     protected double calcularIMC(){
-        return pesoEnKg/(Math.pow(alturaEnCm/(double)100,2));
+        double imc = pesoEnKg/(Math.pow(alturaEnCm/(double)100,2));
+        //return pesoEnKg/(Math.pow(alturaEnCm/(double)100,2));
+        return imc;
     }
     protected abstract double calcularPesoIdeal();
+
+
     @Override
     public String toString(){
         return  "Nombre: " + nombre + " Apellido: " + apellido1 +"\nEdad: " + edad + "  Altura: " + alturaEnCm + "\nPeso: " + pesoEnKg + "\nIMC: " + calcularIMC();
@@ -69,6 +78,10 @@ public abstract class Persona implements Parcelable {
 
     public void setApellido1(String apellido1) {
         this.apellido1 = apellido1;
+    }
+
+    public String getSexo() {
+        return sexo;
     }
 }
 

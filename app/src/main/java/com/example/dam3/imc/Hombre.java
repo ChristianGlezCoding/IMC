@@ -12,13 +12,14 @@ import android.os.Parcel;
  * @author carlos
  */
 public  class Hombre extends Persona{
-    
 
-    public Hombre(String nombre, String ape1, int edad, int altura, double peso){
-        super(nombre, ape1, edad, altura, peso);
+    double ideal;
+
+    public Hombre(String nombre, String ape1, int edad, int altura, double peso, String sexo){
+        super(nombre, ape1, edad, altura, peso, sexo);
     }
     public Hombre (Parcel in){
-        this(in.readString(), in.readString(), Integer.parseInt(in.readString()), Integer.parseInt(in.readString()), Double.parseDouble(in.readString()));
+        this(in.readString(), in.readString(), Integer.parseInt(in.readString()), Integer.parseInt(in.readString()), Double.parseDouble(in.readString()), in.readString());
 
     }
      /**
@@ -51,6 +52,7 @@ public  class Hombre extends Persona{
         parcel.writeString(String.valueOf(edad));
         parcel.writeString(String.valueOf(alturaEnCm));
         parcel.writeString(String.valueOf(pesoEnKg));
+        parcel.writeString(sexo);
 
 
     }
@@ -66,4 +68,9 @@ public  class Hombre extends Persona{
             return new Hombre[0];
         }
     };
+
+    public double getIdeal() {
+        ideal = calcularPesoIdeal();
+        return ideal;
+    }
 }

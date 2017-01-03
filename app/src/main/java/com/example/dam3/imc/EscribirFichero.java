@@ -36,6 +36,7 @@ public class EscribirFichero extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
 
+
     // TODO: Rename and change types of parameters
 
 
@@ -48,7 +49,9 @@ public class EscribirFichero extends Fragment {
     TextView textviewNombre;
     Button buttonBDD;
     Persona persona;
-
+    BDD db;
+    Calcular c;
+    //String sexo;
 
 
 
@@ -56,6 +59,7 @@ public class EscribirFichero extends Fragment {
 
     public EscribirFichero() {
         // Required empty public constructor
+
     }
 
     /**
@@ -65,28 +69,33 @@ public class EscribirFichero extends Fragment {
      * @return A new instance of fragment EscribirFichero.
      */
     // TODO: Rename and change types and number of parameters
-    public static EscribirFichero newInstance(Persona persona) {
+    public static EscribirFichero newInstance(Persona persona, String sexo) {
         EscribirFichero fragment = new EscribirFichero();
         Bundle args = new Bundle();
         //En caso de querer pasar un String
         //args.putString(ARG_PARAM1, param1);
-
+        //args.putString(ARG_PARAM1, sexo);
         //Pasando como objeto
         args.putParcelable("Persona", persona);
         fragment.setArguments(args);
         return fragment;
+
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
 
 
 
 
 
+
         }
+
     }
 
     @Override
@@ -98,8 +107,12 @@ public class EscribirFichero extends Fragment {
         persona = (Persona)getArguments().getParcelable("Persona");
         //Para pasar como String
         //datos = getArguments().getString("Datos");
+
+        //sexo = getArguments().getString("Sexo");
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_escribir_fichero, container, false);
+
+
 
 
     }
@@ -116,6 +129,7 @@ public class EscribirFichero extends Fragment {
         textviewNombre = (TextView)view.findViewById(R.id.editTextNombre);
         textviewApellido = (TextView)view.findViewById(R.id.editTextApellidos);
         buttonEscribir = (Button)view.findViewById(R.id.buttonEscribirEnFichero);
+        buttonBDD = (Button)view.findViewById(R.id.buttonBDD);
 
 
 
@@ -139,10 +153,34 @@ public class EscribirFichero extends Fragment {
             }
         });
 
-        buttonBDD.setOnClickListener(new View.OnClickListener() {
+       buttonBDD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
+                db = new BDD(getActivity());
+                String nombre_completo;
+                persona.setNombre(textviewNombre.getText().toString());
+                persona.setApellido1(textviewApellido.getText().toString());
+
+
+                nombre_completo = persona.getNombre() + " " + persona.getApellido1();
+
+                   /** if(c.sexo.equals("Hombre")) {
+                        db.insertarRegistro(db.getWritableDatabase(), nombre_completo, persona.getEdad(), persona.getAlturaEnCm(), persona.getPesoEnKg(), persona.calcularIMC(), "Hombre", persona.calcularPesoIdeal());
+                        Toast t = Toast.makeText(getActivity(), "Los datos de " + nombre_completo + " han sido grabados en la Base de Datos", Toast.LENGTH_SHORT);
+                        t.show();
+
+                    }else if(c.sexo.equals("Mujer")){
+                        db.insertarRegistro(db.getWritableDatabase(), nombre_completo, persona.getEdad(), persona.getAlturaEnCm(), persona.getPesoEnKg(), persona.calcularIMC(), "Mujer", persona.calcularPesoIdeal());
+                        Toast t = Toast.makeText(getActivity(), "Los datos de " + nombre_completo + " han sido grabados en la Base de Datos", Toast.LENGTH_SHORT);
+                        t.show();
+                    }
+                    **/
+
+                db.insertarRegistro(db.getWritableDatabase(), nombre_completo, persona.getEdad(), persona.getAlturaEnCm(), persona.getPesoEnKg(), persona.calcularIMC(), persona.sexo, persona.calcularPesoIdeal());
+
+
+
             }
         });
 
@@ -188,13 +226,10 @@ public class EscribirFichero extends Fragment {
             archivo.write(textoGrabar);
             archivo.flush();
             archivo.close();
-            Toast t = Toast.makeText(getActivity(), "Los datos fueron grabados",Toast.LENGTH_SHORT);
+            Toast t = Toast.makeText(getActivity(), "Los datos fueron grabados en un fichero",Toast.LENGTH_SHORT);
             t.show();
             t = Toast.makeText(getActivity(), persona.toString() ,Toast.LENGTH_SHORT);
             t.show();
-
-
-
             getActivity().finish();
         } catch (IOException e) {
             Toast t = Toast.makeText(getActivity(), "Los datos no fueron grabados",Toast.LENGTH_SHORT);
