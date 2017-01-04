@@ -8,12 +8,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+
 
 public class BDD extends SQLiteOpenHelper {
 
@@ -32,7 +28,7 @@ public class BDD extends SQLiteOpenHelper {
 
 
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
-            //sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + "ANOTACIONES");
+
             String CREATE_IMC_TABLE = "CREATE TABLE IF NOT EXISTS"
                     + " IMC" + " ("
                     + "ID" + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -114,12 +110,7 @@ public class BDD extends SQLiteOpenHelper {
             return anotaciones;
         }
 
-        public void sentencia(SQLiteDatabase db, String sentencia){
 
-            db.execSQL(sentencia);
-
-
-        }
 
         public void borrar (SQLiteDatabase db){
 
@@ -130,10 +121,10 @@ public class BDD extends SQLiteOpenHelper {
     public ArrayList<String> obtenerRegistrosFiltrados(SQLiteDatabase db, String nom){
 
         String nombre, edad, altura, peso, imc, sexo, ideal;
-        String filtroWhereLike = "%";
+
 
         String where = "Nombre LIKE ?";
-        String[] whereArgs = {filtroWhereLike};
+
 
         Cursor c = null;
         c = db.query("IMC", null, where,
@@ -141,7 +132,6 @@ public class BDD extends SQLiteOpenHelper {
                 null);
 
 
-        //c = db.query("IMC", null, where, whereArgs, null, null, null);
         ArrayList <String> anotaciones = new ArrayList<>();
         if( c != null && c.moveToFirst() ){
             do {

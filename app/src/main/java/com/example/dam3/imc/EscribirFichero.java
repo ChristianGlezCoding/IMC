@@ -9,13 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.io.*;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
@@ -41,17 +36,15 @@ public class EscribirFichero extends Fragment {
 
 
 
-    //String nombre;
-    //String apellido;
-    //String datos;
+
     String textoGrabar;
     TextView textviewApellido;
     TextView textviewNombre;
     Button buttonBDD;
     Persona persona;
     BDD db;
-    Calcular c;
-    //String sexo;
+
+
 
 
 
@@ -108,7 +101,6 @@ public class EscribirFichero extends Fragment {
         //Para pasar como String
         //datos = getArguments().getString("Datos");
 
-        //sexo = getArguments().getString("Sexo");
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_escribir_fichero, container, false);
 
@@ -165,17 +157,6 @@ public class EscribirFichero extends Fragment {
 
                 nombre_completo = persona.getNombre() + " " + persona.getApellido1();
 
-                   /** if(c.sexo.equals("Hombre")) {
-                        db.insertarRegistro(db.getWritableDatabase(), nombre_completo, persona.getEdad(), persona.getAlturaEnCm(), persona.getPesoEnKg(), persona.calcularIMC(), "Hombre", persona.calcularPesoIdeal());
-                        Toast t = Toast.makeText(getActivity(), "Los datos de " + nombre_completo + " han sido grabados en la Base de Datos", Toast.LENGTH_SHORT);
-                        t.show();
-
-                    }else if(c.sexo.equals("Mujer")){
-                        db.insertarRegistro(db.getWritableDatabase(), nombre_completo, persona.getEdad(), persona.getAlturaEnCm(), persona.getPesoEnKg(), persona.calcularIMC(), "Mujer", persona.calcularPesoIdeal());
-                        Toast t = Toast.makeText(getActivity(), "Los datos de " + nombre_completo + " han sido grabados en la Base de Datos", Toast.LENGTH_SHORT);
-                        t.show();
-                    }
-                    **/
 
                 db.insertarRegistro(db.getWritableDatabase(), nombre_completo, persona.getEdad(), persona.getAlturaEnCm(), persona.getPesoEnKg(), persona.calcularIMC(), persona.getSexo(), persona.calcularPesoIdeal());
                 Toast t = Toast.makeText(getActivity(), "Los datos de " + nombre_completo + " han sido grabados en la Base de Datos", Toast.LENGTH_SHORT);

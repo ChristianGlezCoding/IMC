@@ -14,6 +14,7 @@ import android.os.Parcelable;
  *
  * @author carlos
  */
+
 public abstract class Persona implements Parcelable {
     protected String nombre;
     protected String apellido1;
@@ -41,7 +42,6 @@ public abstract class Persona implements Parcelable {
     
     protected double calcularIMC(){
         double imc = pesoEnKg/(Math.pow(alturaEnCm/(double)100,2));
-        //return pesoEnKg/(Math.pow(alturaEnCm/(double)100,2));
         return imc;
     }
     protected abstract double calcularPesoIdeal();
@@ -84,9 +84,6 @@ public abstract class Persona implements Parcelable {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
 }
 
 

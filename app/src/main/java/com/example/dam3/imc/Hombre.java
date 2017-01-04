@@ -69,8 +69,5 @@ public  class Hombre extends Persona{
         }
     };
 
-    public double getIdeal() {
-        ideal = calcularPesoIdeal();
-        return ideal;
-    }
+
 }

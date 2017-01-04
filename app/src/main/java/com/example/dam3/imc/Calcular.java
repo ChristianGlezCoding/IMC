@@ -23,7 +23,7 @@ public class Calcular extends AppCompatActivity {
     int altura;
     int edad;
     String sexo;
-    //Bundle bundle;
+
 
 
     @Override
@@ -66,10 +66,9 @@ public class Calcular extends AppCompatActivity {
                         Hombre = new Hombre("", "", edad, altura, peso, sexo);
                         Hombre.calcularIMC();
 
-                        //bundle = new Bundle();
-                        //bundle.putString("Sexo", sexo);
+
                         persona = Hombre;
-                        //intent.putExtras(bundle);
+
 
                     } if (botonMujer.isChecked()) {
 
@@ -78,10 +77,9 @@ public class Calcular extends AppCompatActivity {
                         Mujer = new Mujer("", "", edad, altura, peso, sexo);
                         Mujer.calcularIMC();
 
-                        //bundle = new Bundle();
-                        //bundle.putString("Sexo", sexo);
+
                         persona = Mujer;
-                        //intent.putExtras(bundle);
+
 
                     }
 

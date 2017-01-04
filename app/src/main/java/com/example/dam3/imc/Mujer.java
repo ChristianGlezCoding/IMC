@@ -70,8 +70,4 @@ public class Mujer extends Persona{
         }
     };
 
-    public double getIdeal() {
-        ideal = calcularPesoIdeal();
-        return ideal;
-    }
 }

@@ -47,12 +47,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long
                     id) {
-                // La posición donde se hace clic en el elemento de lista
+
                 int posicion = position;
-                //obtener el valor del string del elemento donde se hizo clic
+
                 String itemValue = (String) listView.getItemAtPosition(position);
-                //Con el fin de empezar a mostrar una nueva actividad lo que necesitamos
-                //es un intent
+
                 Intent intent = new Intent(getApplicationContext(), (Class<Activity>)
                         activities.get(itemValue));
                 db.onCreate(db.getReadableDatabase());
